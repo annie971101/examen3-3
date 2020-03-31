@@ -104,3 +104,79 @@ print(len(C))
 N = [ c for c in C if c[2]=='fedora']
 print(N)
 print(len(N))
+
+"""
+<Monads>
+
+--Hole in my soul apocalyptica--  20 pts
+
+There's a hole in my heart, in my life, in my way
+And it's filled with regret and all I did, to push you away
+If there's still a place in your life, in your heart for me
+I would do anything, so don't ask me to leave
+
+I've got a hole in my soul where you use to be
+You're the thorn in my heart and you're killing me
+I wish I could go back and do it all differently
+I wish that I'd treated you differently
+'Cause now there's a hole in my soul where you use to be
+
+El fragmento anterior es un canción del grupo apocalyptica
+
+Usando Monads obtenga la letra 
+que menos se repite de todo el fragmento y obtenga la probabilidad de sacar dicha
+letra.
+
+Nota: Pueden ayudarse de funciones recursivas y compresiones de lista. 
+
+"""
+from functools import reduce
+
+
+lis = ["""There's a hole in my heart, in my life, in my
+     way And it's filled with regret and all I did, to push you away
+    If there's still a place in your life, in your heart for me
+    I would do anything, so don't ask me to leave
+    I've got a hole in my soul where you use to be
+    You're the thorn in my heart and you're killing me
+    I wish I could go back and do it all differently
+    I wish that I'd treated you differently
+    'Cause now there's a hole in my soul where you use to be"""]
+
+
+def contar(e, l):
+    v = 0
+    for i in l:
+        if e == i:
+            v += 1
+    return v + 1
+
+def unicos(l):
+    co = []
+    c = []
+    n = []
+    if not l:
+        return []
+    p = l[0]
+    for i in p:
+        if not i in c:
+            if i != ' ':
+                if i != '\n':
+                    c.append(i)
+        else:
+            n.append(i)
+
+    for a in c:
+        co.append(contar(a, n))
+    v = reduce(lambda a,b: a + b, co)
+    print('Probabilidad: 1 /',v)
+    letras = list(zip(c, co))
+    print('Lista de letras que existen y cuantas veces se repite\n',letras)
+  
+    return letras
+
+s = unicos(lis)
+f = filter(lambda a: a[1] == 1, s)
+d = list(f)
+print('\nLetra(s) con menos aparicion en el texto')
+print('\n',d)
