@@ -1,3 +1,5 @@
+#Martinez Almanza Anahi
+#Montes Rubio Yasmin
 """
 
  Primos  <generadores>  30 pts
@@ -86,8 +88,8 @@ Combinaciones <Comprensión de listas> 30pts
 	2) imprima un mensaje donde mencione la cantidad de conjuntos posibles
 	
 """
-A = ['roja','negra','azul','morada','cafe']
-B = ['negro','azul','cafe oscuro','crema']
+A = ['camisa roja','camisa negra','camisa azul','camisa morada','camisa cafe']
+B = ['pantalon negro','pantalon azul','pantalon cafe oscuro','pantalon crema']
 D = ['cinturon','tirantes','lentes','fedora']
 
 C = [[a,b,d] for a in A for b in B for d in D ]
